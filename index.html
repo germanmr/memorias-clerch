@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Memorias y Ascendencia Clerch â€” Esteban Clerch Casals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --surface: #fffcf8;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --accent: #7c2d3e;
+      --accent-soft: #f5e8ec;
+      --border: #e7e0d6;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Outfit", system-ui, sans-serif;
+      --max: 42rem;
+      --wide: 56rem;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      line-height: 1.75;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 2rem 1.25rem;
+      font-family: var(--sans);
+      font-size: 0.82rem;
+    }
+    nav h2 {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    nav a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 0.35rem 0;
+      border-left: 2px solid transparent;
+      padding-left: 0.75rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+    main { padding: 0 2rem 4rem; max-width: calc(var(--wide) + 4rem); }
+    .hero {
+      padding: 4rem 0 3rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .hero .eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      font-weight: 600;
+      line-height: 1.1;
+      max-width: 18ch;
+    }
+    .hero .subtitle {
+      margin-top: 1.25rem;
+      font-size: 1.35rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .hero .meta {
+      margin-top: 2rem;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+    section > h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    section > .lead {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+      max-width: var(--max);
+    }
+    .prose { max-width: var(--max); }
+    .prose p { margin-bottom: 1.1rem; text-align: justify; hyphens: auto; }
+    .prose h3 {
+      font-size: 1.5rem;
+      margin: 2rem 0 0.75rem;
+      font-weight: 600;
+    }
+    .genealogy {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem 2rem;
+      max-width: var(--wide);
+      margin: 1.5rem 0;
+      font-size: 1.05rem;
+    }
+    .genealogy ol { padding-left: 1.25rem; }
+    .genealogy li { margin-bottom: 0.65rem; }
+    .genealogy .gen-name { font-weight: 600; }
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: var(--wide);
+      margin: 1.5rem 0;
+    }
+    .family-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+    }
+    .family-card strong { display: block; color: var(--accent); margin-bottom: 0.25rem; }
+    figure {
+      margin: 2rem 0;
+      max-width: var(--wide);
+    }
+    figure img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: zoom-in;
+      background: #fff;
+    }
+    figcaption {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.75rem;
+      max-width: var(--wide);
+    }
+    .gallery a {
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 3/4;
+      background: #fff;
+    }
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+    .gallery a:hover img { transform: scale(1.03); }
+    .note {
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      border-radius: 0 8px 8px 0;
+      max-width: var(--max);
+    }
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--muted);
+      max-width: var(--max);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .modal.open { display: flex; }
+    .modal img { max-width: 95vw; max-height: 90vh; border-radius: 4px; }
+    .modal button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #fff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+      nav {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1rem;
+        padding: 1rem;
+      }
+      nav h2 { width: 100%; margin-bottom: 0; }
+      nav a { border: none; padding: 0.25rem 0; }
+      main { padding: 0 1.25rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="layout">
+  <nav>
+    <h2>Ãndice</h2>
+    <a href="#intro">IntroducciÃ³n</a>
+    <a href="#genealogia">GenealogÃ­a</a>
+    <a href="#das">Das y la Cerdanya</a>
+    <a href="#infancia">Infancia</a>
+    <a href="#escuela">La escuela</a>
+    <a href="#barcelona">Barcelona</a>
+    <a href="#argentina">Argentina</a>
+    <a href="#antillas">Las Antillas</a>
+    <a href="#familia-espana">Familia en EspaÃ±a</a>
+    <a href="#tito">Tito</a>
+    <a href="#salvador">Salvador</a>
+    <a href="#maria">MarÃ­a</a>
+    <a href="#rosita">Rosita</a>
+    <a href="#dolores">Dolores</a>
+    <a href="#francisco">Francisco</a>
+    <a href="#maria-hermana">MarÃ­a (hermana)</a>
+    <a href="#globo">Bar El Globo</a>
+    <a href="#fotos">FotografÃ­as</a>
+    <a href="#nota-1957">Nota de 1957</a>
+    <a href="#originales">PÃ¡ginas originales</a>
+  </nav>
+
+  <main>
+    <header class="hero" id="intro">
+      <p class="eyebrow">Memorias familiares Â· Das, 1884 â€” Tres Arroyos, 1957</p>
+      <h1>Mis Memorias y Ascendencia Clerch</h1>
+      <p class="subtitle">Escritas a grandes rasgos por Esteban Clerch Casals</p>
+      <p class="meta">VersiÃ³n digital Â· TranscripciÃ³n del manuscrito original (52 pÃ¡ginas)</p>
+    </header>
+
+    <section id="genealogia">
+      <h2>Ascendencia Clerch</h2>
+      <p class="lead">Desde el aÃ±o 1615 hasta 1957. Datos extraÃ­dos del archivo de la Iglesia de Das, Gerona, EspaÃ±a.</p>
+      <div class="genealogy prose">
+        <p><strong>Linaje directo</strong></p>
+        <ol>
+          <li><span class="gen-name">Antonio Clerch</span> â€” naciÃ³ en Das, Gerona, 1615. Casado con Catalina Vigo.</li>
+          <li><span class="gen-name">Juan Clerch y Vigo</span> â€” 1657.</li>
+          <li><span class="gen-name">Miguel Clerch</span> â€” 1677. Casado con MarÃ­a RusiÃ±ol.</li>
+          <li><span class="gen-name">Miguel Clerch y RusiÃ±ol</span> â€” 1726. Casado con Donata Platero.</li>
+          <li><span class="gen-name">JosÃ© Clerch y Platero</span> â€” 1750. Casado con Rosa RusiÃ±ol.</li>
+          <li><span class="gen-name">Lorenzo Clerch y RusiÃ±ol</span> â€” 1773. Casado con MarÃ­a Pujol.</li>
+          <li><span class="gen-name">JosÃ© Clerch y Pujol</span> â€” 1797. Casado con Rosa Capdevila.</li>
+          <li><span class="gen-name">JosÃ© Clerch y Capdevila</span> â€” 1821. Casado con MarÃ­a JuandÃ³.</li>
+          <li><span class="gen-name">Salvador Clerch y JuandÃ³</span> â€” 1854. Casado con Buenaventura Casals (1855).</li>
+        </ol>
+        <p style="margin-top:1.5rem"><strong>Hijos de Salvador y Buenaventura</strong> (8 hijos):</p>
+        <div class="family-grid">
+          <div class="family-card"><strong>Rosa</strong>28 ago 1880</div>
+          <div class="family-card"><strong>Francisco</strong>19 feb 1882</div>
+          <div class="family-card"><strong>Esteban</strong>8 feb 1884</div>
+          <div class="family-card"><strong>Pedro</strong>11 jun 1886</div>
+          <div class="family-card"><strong>Dolores</strong>10 may 1888</div>
+          <div class="family-card"><strong>Francisca</strong>13 may 1890</div>
+          <div class="family-card"><strong>Marcos</strong>9 ago 1892</div>
+          <div class="family-card"><strong>MarÃ­a</strong>25 ago 1894</div>
+        </div>
+        <p><strong>Esteban Clerch</strong> se casÃ³ el 9 de diciembre de 1909 con <strong>Dolores Bidart</strong>, de Santesteban, Navarra. Cuatro hijos:</p>
+        <ul style="margin-top:0.75rem;padding-left:1.25rem">
+          <li>Francisco Clerch Bidart (Tito) â€” 18 ene 1911 Â· casado con Josefa Costa, 7 jul 1939</li>
+          <li>Salvador Clerch Bidart â€” 21 abr 1913 Â· casado con Dora Tejeda, 7 dic 1940</li>
+          <li>MarÃ­a Clerch Bidart â€” 3 may 1915 Â· casada con Miguel Romano, 25 ene 1947</li>
+          <li>Rosita Clerch Bidart â€” 17 ago 1920 Â· soltera en 1957</li>
+        </ul>
+        <p style="margin-top:1rem"><strong>Marcos Clerch</strong> casado con Isabel GonzÃ¡lez â€” hijos: Francisco (1931) y Buenaventura Isabel (1933), casada con NicolÃ¡s Sabatini; hija Marina Sabatini Clerch (18 abr 1957).</p>
+        <p style="margin-top:1rem"><em>Escrito por Esteban Clerch, 2 de octubre de 1957.</em></p>
+      </div>
+      <div class="prose">
+        <h3>Algunos decesos</h3>
+        <p>JosÃ© Clerch Pujol (1797) â€” falleciÃ³ 22 sep 1853 Â· JosÃ© Clerch Capdevila (1821) â€” 12 jun 1893 Â· Salvador Clerch JuandÃ³ (1854) â€” 4 abr 1922 Â· Buenaventura Casals y Forcada (1855) â€” 7 nov 1942.</p>
+        <p>Todas las personas de apellido Clerch que figuran en este documento, desde 1615 hasta 1900, nacieron en Das, Gerona, EspaÃ±a.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_004.png" alt="Ascendencia Clerch â€” pÃ¡gina original" loading="lazy">
+        <figcaption>PÃ¡gina original â€” Ascendencia Clerch (1957)</figcaption>
+      </figure>
+    </section>
+
+    <section id="das">
+      <h2>Das y la Cerdanya</h2>
+      <p class="lead">El pueblo donde naciÃ³ y creciÃ³ la familia Clerch.</p>
+      <div class="prose">
+        <p>NacÃ­ en Das, provincia de Gerona, EspaÃ±a, el dÃ­a 8 de febrero de 1884.</p>
+        <p>El pueblo de Das solo cuenta con unas 50 viviendas. EstÃ¡ en un valle llamado Cerdanya, de unos 18 kilÃ³metros de longitud por unos 15 de ancho; cuya llanura estÃ¡ rodeada por una blanca muralla de gigantescas montaÃ±as, en cuyo centro hay 25 pueblitos o aldeas, que oscilan entre 25 a 100 viviendas cada uno, y otro llamado PuigcerdÃ  que tiene 500 viviendas.</p>
+        <p>Se goza de un panorama maravilloso si se contempla el valle desde cierta altura de la montaÃ±a. Desde ciertos sitios, sin moverse del lugar, la vista abarca casi a todos los pueblos y aldeas, debido a que estÃ¡n a muy poca distancia unos de otros.</p>
+        <p>Cada familia suele tener un campito muy chico, y como siembran cierta diversidad de cosas distintas, en primavera y el verano, si se contempla la llanura desde la montaÃ±a, parece un mosaico de diversos colores, o un tapiz con una colecciÃ³n de dibujos hermosÃ­simos.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_006.png" alt="El pueblo de Das" loading="lazy">
+        <figcaption>El pueblo de Das â€” Â«La primera casa de la izquierda la hizo edificar mi padre y la inauguramos el aÃ±o 1892Â»</figcaption>
+      </figure>
+    </section>
+
+    <section id="infancia">
+      <h2>Infancia y familia</h2>
+      <div class="prose">
+        <p>El recuerdo mÃ¡s remoto de que tengo memoria data del aÃ±o 1887; o sea de cuando solo tenÃ­a tres aÃ±os, al fallecer mi padrino (abuelo materno de mi padre). Recuerdo que al decirme que habÃ­a fallecido mi padrino, me puse a llorar desconsoladamente, diciendo que no querÃ­a que lo enterraran.</p>
+        <p>En el pueblo de Das nacimos todos los hermanos. Ã‰ramos 4 varones y 4 mujeres; 8 en total. Todos nos llevÃ¡bamos 2 aÃ±os de diferencia.</p>
+        <p>En mi infancia, la familia se componÃ­a del abuelo paterno JosÃ© Clerch; mi padre Salvador Clerch; mi madre Buenaventura Casals y de los ocho hermanos.</p>
+        <p>El aÃ±o 1893 falleciÃ³ el abuelo JosÃ© Clerch a edad de 71 aÃ±os. El aÃ±o 1895, a causa de una epidemia de tifus, en pocos dÃ­as fallecieron Rosa, Dolores y Francisco. El aÃ±o 1906 falleciÃ³ Pedro en Manresa, provincia de Barcelona, tambiÃ©n de tifus. En 1907, MarÃ­a estuvo muy mal al estar atacada tambiÃ©n de tifus. CreÃ­an que no se salvarÃ­a. DespuÃ©s que curÃ³, por varios meses quedÃ³ muy dÃ©bil de piernas.</p>
+        <p>Marcos, el aÃ±o 1927, estando reciÃ©n casado, se vino a la Argentina con su esposa Isabel. En el vapor Marcos tambiÃ©n fue atacado de tifus. Al llegar estuvo muy mal durante dos meses. Luego se compuso admirablemente; pero siempre se quejaba de un cÃ¡lculo que tenÃ­a al riÃ±Ã³n. El aÃ±o 1933 fue con Isabel y Francisquito a EspaÃ±a en viaje de placer. En Barcelona se hizo operar para sacar el citado cÃ¡lculo del riÃ±Ã³n y falleciÃ³ en la operaciÃ³n.</p>
+      </div>
+    </section>
+
+    <section id="escuela">
+      <h2>La escuela</h2>
+      <div class="prose">
+        <p>Desde la edad de 6 aÃ±os fuimos a la escuela hasta los 14; pero era tan atrasada la enseÃ±anza, por lo menos en aquellos pueblos, y el maestro dejaba tanto que desear, que a pesar de haber ido 8 aÃ±os consecutivos maÃ±ana y tarde a la escuela, a los 14 aÃ±os de edad no estÃ¡bamos mÃ¡s adelantados que hoy dÃ­a en la Argentina los que cursan el tercer grado a los ocho o nueve aÃ±os de edad.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_010.png" alt="La escuela de Das" loading="lazy">
+        <figcaption>La escuela de Das â€” Â«Muy bonita, muy espaciosa, pero malos maestros e incapaces para el cargoÂ»</figcaption>
+      </figure>
+    </section>
+
+    <section id="barcelona">
+      <h2>Barcelona (1899â€“1903)</h2>
+      <div class="prose">
+        <p>El aÃ±o 1899, salÃ­ por primera vez de Cerdanya para ir a trabajar en Barcelona. TenÃ­a 15 aÃ±os. Salimos a las 6 de la maÃ±ana de Das. Fuimos a pie cruzando la montaÃ±a hasta Ribas, donde llegamos a las 12 del mediodÃ­a. Tomamos una tartana hasta Ripoll y de allÃ­ el tren para Barcelona, donde llegamos a las 8 de la noche.</p>
+        <p>Francisco hacÃ­a ya un aÃ±o que estaba en Barcelona, en la Posada de San Antonio. Me dijo que en el Hotel Duval de la Rambla necesitaban un ayudante de cocina. Me pagaban 7 pesetas mensuales, pero tenÃ­a que dormir en un lavadero donde hacÃ­an hervir ropa con jabÃ³n y lejÃ­a desde las 4 a 5 de la maÃ±ana. A los 4 dÃ­as salÃ­.</p>
+        <p>Al dÃ­a siguiente, la tÃ­a Margarita me dijo que en la calle Trafalgar NÂº 4 necesitaban un lavaplatos â€” un restaurant frente del Arco del Triunfo. Me pagaban 10 pesetas por mes. El trabajo era muy pesado: de 8 a 10 de la maÃ±ana iba al mercado con una canasta de unos 50 kilos o mÃ¡s.</p>
+        <p>Un dÃ­a Francisco me dijo que tenÃ­a deseos de ir a Venezuela. Un buen dÃ­a me vino a ver y me dijo que habÃ­a sacado pasaje para Buenos Aires en el vapor Patricia de SatÃºstregui. Era el aÃ±o 1900. Francisco tenÃ­a 17 aÃ±os; cumpliÃ³ los 18 durante el viaje.</p>
+        <p>Yo fui a ocupar su puesto en la Posada de San Antonio como ayudante de mozo de comedor, con 8 pesetas mensuales y unas 5 o 6 de propina. Estuve 7 u 8 meses. Por intermedio de la Sociedad de Mozos y Cocineros, fui al Hotel Sol y Creu en MatarÃ³ â€” la casa que mÃ¡s me gustÃ³.</p>
+        <p>Me embarquÃ© el 2 de febrero de 1903 con el vapor Alfonso Trece para Buenos Aires. DesembarquÃ© el 25 de febrero. El 8 de febrero cumplÃ­ los 17 aÃ±os en el mar. Todo mi capital se componÃ­a de 5 pesos argentinos.</p>
+      </div>
+    </section>
+
+    <section id="argentina">
+      <h2>Vida en Argentina</h2>
+      <div class="prose">
+        <p>La primera casa que trabajÃ© en Buenos Aires fue una fÃ¡brica de masas en Corrientes 1050, con un sueldo de 30 pesos por mes. Todas las maÃ±anas repartÃ­a masitas a varios bares con una bandeja de madera arriba de la cabeza.</p>
+        <p>En 1903 trabajÃ© de cocinero en varios pueblos del interior y luego en la RotiserÃ­a Sportman de Florida â€” el mejor restaurant de Buenos Aires. HabÃ­a 15 cocineros y el jefe era de ParÃ­s. TrabajÃ© de cocinero de noche en el Club del Progreso, Avenida de Mayo al 600. Los socios eran la aristocracia argentina. Preparaba un cocktail San MartÃ­n para el Dr. Estrada, un chocolate bien espeso para el Dr. SÃ¡enz PeÃ±a, y a veces un bife a caballo con papas fritas.</p>
+        <p>En 1906 Francisco fue a EspaÃ±a; falleciÃ³ Pedro en Manresa. En 1908 fui a EspaÃ±a 3 meses. En 1909 fui de primer cocinero al Hotel FrancÃ©s de Tandil. Me casÃ© con Dolores Bidart el 9 de diciembre de ese aÃ±o.</p>
+        <p>En 1911 naciÃ³ Tito (Francisco Clerch Bidart) en Tandil. Nos mudamos a Buenos Aires, donde Francisco tenÃ­a el Bar El Globo en Salta y Victoria (hoy HipÃ³lito Irigoyen).</p>
+        <p>A Ãºltimos de 1912 fui a Salto, donde naciÃ³ Salvador. Luego a JunÃ­n, donde puse un restaurant que vendÃ­ pronto. En 1913 puse un Bar y Billares en el Azul, que tuve hasta 1918.</p>
+        <p>En 1918 fui con Dolores, Fito, Salvador y MarÃ­a a EspaÃ±a. Dejamos a Salvador y MarÃ­a con mi madre. El 4 de abril de 1922 falleciÃ³ mi padre. No pude volver a EspaÃ±a hasta 1925, cuando fui a Francia y Alemania a comprar mercaderÃ­as.</p>
+        <p>En 1925 traje a Salvador; dejÃ© a MarÃ­a dos aÃ±os mÃ¡s. En 1929 pude hacer otro viaje y traje a MarÃ­a, con gran alegrÃ­a de Dolores y profundo pesar de mi madre.</p>
+      </div>
+    </section>
+
+    <section id="antillas">
+      <h2>Las Antillas â€” Tres Arroyos</h2>
+      <div class="prose">
+        <p>El aÃ±o 1919 fui a Tres Arroyos. HabÃ­a un local en ColÃ³n 284 â€” una zapaterÃ­a que se trasladaba. Esperamos 2 meses y lo alquilamos. Pusimos venta de cafÃ©s tostados de Los Mandarines y caramelos y bombones.</p>
+        <p>Yo siempre tenÃ­a la idea de tostar nosotros los cafÃ©s. A los 2 aÃ±os le escribÃ­ a Francisco en Buenos Aires. ComprÃ³ una tostadora norteamericana de 5.000 pesos. Empezamos a tostar con buen Ã©xito y pusimos por nombre <strong>Las Antillas</strong>. AllÃ­ naciÃ³ Rosita el 17 de agosto de 1920.</p>
+        <p>En 1922 el propietario quiso edificar y me trasladÃ© a ColÃ³n 520 â€” un local de 10 metros de frente por 14 de fondo, con 2 grandes vidrieras. InvitÃ© a Francisco como socio y agregamos Bazar, LibrerÃ­a, JugueterÃ­a, PerfumerÃ­a, etc. Llegamos a tener 12 empleados.</p>
+        <p>Todos los meses enviÃ¡bamos a Marcos en EspaÃ±a lo que le correspondÃ­a como socio, y para todos los gastos de la familia en Das y Barcelona.</p>
+        <p>Propuse a la madre que pasara los inviernos en Barcelona con Marcos, MarÃ­a (hermana) y mi hija MarÃ­a. Tras mucho insistir, aceptÃ³. Se alquilÃ³ un piso y pasaron los inviernos muy contentos.</p>
+        <p>Marcos al casarse en 1927 volviÃ³ a la Argentina. En 1933 fue a EspaÃ±a y falleciÃ³ en Barcelona tras una operaciÃ³n al riÃ±Ã³n. Isabel volviÃ³; Francisquito quedÃ³ en EspaÃ±a con mi madre y mi hermana.</p>
+        <p>En 1936 vino la revoluciÃ³n espaÃ±ola. El gobierno argentino limitÃ³ los giros. En 1942 falleciÃ³ la madre, a los 87 aÃ±os. En 1947 vinieron Francisquito y Mario de EspaÃ±a.</p>
+        <p>El aÃ±o 1945, a raÃ­z de circunstancias polÃ­ticas, se notaba decadencia en el negocio. En 1949 tuve un ataque de presiÃ³n con pÃ©rdida de memoria. En 1950, por indicaciÃ³n de mi hijo Tito, vino el seÃ±or Goycoa y mediante una indemnizaciÃ³n convencional le cedimos el local con un plazo de 3 meses para liquidar.</p>
+      </div>
+      <div class="note">Las Antillas fue un comercio muy acreditado en Tres Arroyos, con numerosa clientela. Los productos y la atenciÃ³n de la familia Clerch dejaron un hito importante en la vida comercial de la ciudad durante mÃ¡s de treinta aÃ±os.</div>
+      <figure>
+        <img src="diario-esteban-pages/page_004.png5" alt="Las Antillas" loading="lazy">
+        <figcaption>ConfiterÃ­a y JugueterÃ­a Â«Las AntillasÂ», Tres Arroyos</figcaption>
+      </figure>
+    </section>
+
+    <section id="familia-espana">
+      <h2>La familia en EspaÃ±a</h2>
+      <div class="prose">
+        <p>Durante la guerra civil y la guerra europea, las cosas empeoraron. No dejaban enviar encomiendas de mÃ¡s de 10 kilos. HacÃ­amos todo lo humanamente posible para enviar ayuda a la familia en EspaÃ±a.</p>
+        <p>Al finalizar la guerra, MarÃ­a en todas las cartas se quejaba por la falta de vÃ­veres. En 1947 escribimos a Mario para que viniera a la Argentina. Francisquito se incorporÃ³ a Las Antillas; luego eligiÃ³ el Molino Americano y estudiÃ³ Comercial nocturno en el Colegio Nacional.</p>
+      </div>
+    </section>
+
+    <section id="tito">
+      <h2>Tito â€” Francisco Clerch Bidart</h2>
+      <div class="prose">
+        <p>Cuando tenÃ­a 3 meses se herniÃ³ de la ingle y del ombligo. Lo operaron en el Hospital de NiÃ±os con Ã©xito. A los 6 aÃ±os empezÃ³ la escuela particular. CometÃ­ el error de hacerle estudiar 4Âº y 5Âº grado en un solo aÃ±o, y 6Âº grado y 1Âº aÃ±o Nacional tambiÃ©n en un solo aÃ±o.</p>
+        <p>Para el 5Âº aÃ±o Nacional lo mandÃ© al Colegio Mariano Moreno de Buenos Aires. Se recibiÃ³ de bachiller, estudiÃ³ ingenierÃ­a, dejÃ³ y estudiÃ³ Comercial. Puso una Academia Comercial en Tres Arroyos con mucho Ã©xito.</p>
+        <p>Se casÃ³ con Josefa Costa el 7 de julio de 1939. Tres hijos: Jorge (3 abr 1940), Hugo (14 dic 1941), Marta (5 jul 1945). Jorge sigue con la Academia. Tito reside en Buenos Aires con otra Academia en Santa Fe 3495 y un departamento en Beruti 3489.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_026.png" alt="Fotos de Tito y familia" loading="lazy">
+        <figcaption>Fotos de Tito y familia</figcaption>
+      </figure>
+    </section>
+
+    <section id="salvador">
+      <h2>Salvador Clerch Bidart</h2>
+      <div class="prose">
+        <p>Cuando tenÃ­a 2 aÃ±os se herniÃ³ de la ingle. Lo llevÃ© a Buenos Aires y lo operaron en el Hospital de NiÃ±os con Ã©xito. De chico fue de carÃ¡cter muy tranquilo y alegre.</p>
+        <p>Los aÃ±os en EspaÃ±a lo retrasaron en la escuela. Al regresar a los 12 aÃ±os lo pusieron en 2Âº grado. EstudiÃ³ arquitectura en Rosario. Se casÃ³ con Dora Tejeda el 4 de diciembre de 1940. Cuatro hijos: Roberto (1941), Dorita (1944), Salvador (1946), Enrique (1949).</p>
+        <p>Estuvo en Las Antillas y vendÃ­a mÃ¡quinas Hermes. Luego puso una Academia Comercial en Necochea.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_027.png" alt="Fotos de Salvador y familia" loading="lazy">
+        <figcaption>Fotos de Salvador y familia</figcaption>
+      </figure>
+    </section>
+
+    <section id="maria">
+      <h2>MarÃ­a Clerch Bidart</h2>
+      <div class="prose">
+        <p>De carÃ¡cter suelto y atractivo. La hice preparar con maestras particulares e ingresar a la Escuela Normal de Rosario. Se recibiÃ³ de maestra. Se casÃ³ con Miguel Romano en Rosario el 25 de enero de 1947. Tres hijas: NoemÃ­ (1947), Ana MarÃ­a (1951), Normita (1955). Residen en Rosario donde ejerce la docencia.</p>
+        <p>A MarÃ­a y Rosita les hicimos estudiar piano â€” un Zimmerman. Estudiaron 2 a 3 aÃ±os y luego vendÃ­ el piano.</p>
+      </div>
+    </section>
+
+    <section id="rosita">
+      <h2>Rosita Clerch Bidart</h2>
+      <div class="prose">
+        <p>De los cuatro hermanos, es la que hizo los estudios con mÃ¡s regularidad. CursÃ³ el Bachillerato y los cuatro aÃ±os de Profesorado en FÃ­sica y MatemÃ¡ticas en la Universidad de La Plata. Muy estimada por profesores y profesoras.</p>
+        <p>Durante la enfermedad de Dolores la cuidÃ³ siempre con gran cariÃ±o, dÃ­a y noche sin descanso, ejerciendo ademÃ¡s de profesora en el Colegio Nacional.</p>
+      </div>
+    </section>
+
+    <section id="dolores">
+      <h2>Dolores â€” mi esposa</h2>
+      <div class="prose">
+        <p>Acostumbrada a trabajar desde la mÃ¡s tierna edad, era muy buena y muy laboriosa. A veces, como buena vasca navarra, no entendÃ­a de razones, pero le pasaba pronto. Siempre fue muy buena y leal.</p>
+        <p>A los hijos los criÃ³ a todos dÃ¡ndoles el pecho. Apenas se resfriaban, los cuidaba con gran cariÃ±o. SufriÃ³ mucho: varices en cada embarazo, operaciÃ³n de matriz. FalleciÃ³ de cÃ¡ncer tras meses de sufrimiento terrible.</p>
+        <p>Cuando comprÃ© el auto Pontiac, mi objeto principal fue sacarla a pasear. Fuimos varias veces a Tandil, Necochea, JuÃ¡rez, Dorrego, Mar del Plata. Francisco nos pagÃ³ una semana de hotel en Mar del Plata.</p>
+        <p>El dÃ­a que Dolores falleciÃ³, no querÃ­a que nadie la atendiera mÃ¡s que Rosita, y a cada rato decÃ­a: Â«Que venga MarÃ­aÂ». Le enviamos un telegrama; cuando llegaron MarÃ­a y Miguel, Dolores ya habÃ­a fallecido.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_033.png" alt="Dolores y Esteban reciÃ©n casados" loading="lazy">
+        <figcaption>Dolores y Esteban reciÃ©n casados Â· Dolores con Jorge, el primer nieto</figcaption>
+      </figure>
+    </section>
+
+    <section id="francisco">
+      <h2>Francisco â€” mi hermano</h2>
+      <div class="prose">
+        <p>En todo momento fue muy bueno con toda la familia. En 1927 propuso hacer donaciÃ³n a nuestra hermana MarÃ­a de la parte que nos pudiera tocar en EspaÃ±a. Cuando mis hijos sacaban Ãºtiles del negocio, nunca se los cobraba.</p>
+        <p>Durante varios aÃ±os pasaba casi todos los veranos en EspaÃ±a. Tras la revoluciÃ³n espaÃ±ola ya no fue. PasÃ³ inviernos en el norte: Paraguay (1938), Posadas (1939), Corrientes y Resistencia (1940â€“1942).</p>
+        <p>No tenÃ­a visiÃ³n para los negocios. Le dije que comprara el edificio de Las Antillas y la esquina de ColÃ³n â€” tardÃ³ tanto que el precio subiÃ³. Por suerte comprÃ³ la esquina; de lo contrario tendrÃ­a los 45.000 pesos desvalorizados en el banco.</p>
+      </div>
+    </section>
+
+    <section id="maria-hermana">
+      <h2>MarÃ­a â€” mi hermana</h2>
+      <div class="prose">
+        <p>MarÃ­a siempre fue la ayuda de la familia. Primero cuidÃ³ al padre, luego a la madre y a Marcos, y actualmente cuida muy bien a Francisco.</p>
+        <p>En 1947 vino de EspaÃ±a. Francisco edificÃ³ en Brandzen 107 y fueron a vivir allÃ­. En 1952 Mario y yo fuimos a EspaÃ±a a vender las propiedades a nombre de MarÃ­a. Con el producto se comprÃ³ un departamento en Necochea donde pasan diciembre Francisco y MarÃ­a.</p>
+      </div>
+    </section>
+
+    <section id="globo">
+      <h2>Bar El Globo</h2>
+      <div class="prose">
+        <p>El Bar y Restaurante El Globo fue inaugurado en 1908. Actualmente se encuentra en actividad y estÃ¡ incluido en el circuito para turismo extranjero. Conserva su estilo original y la cocina es sumamente elaborada, sobre todo el famoso puchero. EstÃ¡ ubicado en la esquina de HipÃ³lito Yrigoyen y Salta, Buenos Aires.</p>
+        <p>Ya en 1911 el propietario fue Francisco Clerch, hermano del autor de estas memorias.</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_004.png8" alt="Bar El Globo" loading="lazy">
+        <figcaption>Bar El Globo â€” esquina HipÃ³lito Yrigoyen y Salta</figcaption>
+      </figure>
+    </section>
+
+    <section id="fotos">
+      <h2>FotografÃ­as familiares</h2>
+      <p class="lead">Retratos y lugares de la Cerdanya y la familia Clerch.</p>
+      <div class="prose">
+        <p><strong>PÃ¡gina dedicada a MarÃ­a y Rosita:</strong> Rosita mi hija Â· MarÃ­a mi hija Â· MarÃ­a mi hermana Â· Esteban y Dolores, esposos Â· Mi padre y mi madre Â· Mis hijas y mi esposa.</p>
+        <p><strong>Francisco y MarÃ­a:</strong> Francisco mi hermano Â· Pedro mi hermano (fallecido) Â· Marcos con Francisquito Â· Mi madre, Marcos, Mario y MarÃ­a.</p>
+        <p><strong>Lugares:</strong> Paisaje del valle de la Cerdanya Â· Casa paterna en Das Â· PuigcerdÃ¡ (Isabel Clerch y NicolÃ¡s Sabatini).</p>
+      </div>
+      <figure>
+        <img src="diario-esteban-pages/page_017.png" alt="FotografÃ­as familiares" loading="lazy">
+        <figcaption>Esteban y esposa Â· Los nietos Â· Los hijos varones Â· Las hijas en la playa</figcaption>
+      </figure>
+    </section>
+
+    <section id="nota-1957">
+      <h2>Nota familiar â€” 4 de octubre de 1957</h2>
+      <div class="prose">
+        <p>En el aÃ±o 1900 Francisco vino a la Argentina. Yo vine en 1903. Marcos vino en 1910. En 1933 Marcos viajÃ³ a Barcelona para operarse y falleciÃ³. Isabel volviÃ³; MarÃ­a con Francisquito vinieron en 1947.</p>
+        <p>Actualmente los tres hermanos MarÃ­a, Francisco y yo residimos en Tres Arroyos.</p>
+        <p>Mi hijo Francisco (Tito) reside con su esposa e hijos en Tres Arroyos y Buenos Aires, con Academias Comerciales prestigiosas. Salvador reside en Necochea con Academia Comercial y fotografÃ­a artÃ­stica. MarÃ­a reside en Rosario con su esposo e hijas, ambos maestros. Rosa (Rosita) es profesora de FÃ­sica y MatemÃ¡ticas en el Colegio Nacional de Tres Arroyos.</p>
+        <p>Los hijos de Marcos: Francisco RamÃ³n Clerch GonzÃ¡lez, estudia Arquitectura en Buenos Aires. Buenaventura Isabel Clerch GonzÃ¡lez reside en Tres Arroyos con su esposo e hijos, ambos docentes.</p>
+        <p><em>â€” Esteban Clerch Casals, Tres Arroyos, 4 de octubre de 1957</em></p>
+      </div>
+    </section>
+
+    <section id="originales">
+      <h2>PÃ¡ginas originales</h2>
+      <p class="lead">Escaneo completo del manuscrito (52 pÃ¡ginas). Clic para ampliar.</p>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <footer>
+      <p>TranscripciÃ³n digital del manuscrito <em>Mis Memorias y Ascendencia Clerch</em> de Esteban Clerch Casals (1884â€“1964).</p>
+      <p style="margin-top:0.5rem">Fuente original: diario manuscrito con fotografÃ­as y pÃ¡ginas mecanografiadas, 1957.</p>
+    </footer>
+  </main>
+</div>
+
+<div class="modal" id="modal" role="dialog">
+  <button type="button" aria-label="Cerrar">&times;</button>
+  <img src="" alt="PÃ¡gina ampliada">
+</div>
+
+<script>
+  const gallery = document.getElementById('gallery');
+  for (let i = 1; i <= 52; i++) {
+    const n = String(i).padStart(3, '0');
+    const a = document.createElement('a');
+    a.href = `diario-esteban-pages/page_${n}.png`;
+    a.title = `PÃ¡gina ${i}`;
+    a.innerHTML = `<img src="diario-esteban-pages/page_${n}.png" alt="PÃ¡gina ${i}" loading="lazy">`;
+    a.addEventListener('click', e => { e.preventDefault(); openModal(a.href); });
+    gallery.appendChild(a);
+  }
+  const modal = document.getElementById('modal');
+  const modalImg = modal.querySelector('img');
+  function openModal(src) {
+    modalImg.src = src;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  modal.querySelector('button').onclick = () => {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  modal.onclick = e => { if (e.target === modal) modal.querySelector('button').click(); };
+  document.querySelectorAll('figure img').forEach(img => {
+    img.onclick = () => openModal(img.src);
+  });
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
