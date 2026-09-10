@@ -59,7 +59,18 @@ window.GENEALOGY_TREE = {
         spouse: { name: "Miguel Romano", wed: "25 ene 1947", place: "Rosario" },
         children: [
           { name: "Noemí", born: "1 nov 1947" },
-          { name: "Ana María", born: "21 jun 1951" },
+          {
+            name: "Ana María",
+            born: "21 jun 1951",
+            children: [
+              {
+                name: "Germán Muñoz Romano",
+                born: "31 ene 1982",
+                place: "Argentina",
+                spouse: { name: "Evangelina Colella" }
+              }
+            ]
+          },
           { name: "Normita", born: "11 abr 1955" }
         ]
       },
