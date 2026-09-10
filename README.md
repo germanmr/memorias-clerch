@@ -2,4 +2,8 @@
 
 Memorias familiares de **Esteban Clerch Casals** (Das, Gerona, 1884).
 
-Sitio estático publicado en GitHub Pages.
+## Ver el sitio web (memorias navegables)
+
+**https://germanmr.github.io/memorias-clerch/**
+
+(Esta es la pagina web. El repositorio de abajo es solo el codigo fuente.)
