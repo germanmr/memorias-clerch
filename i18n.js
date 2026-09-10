@@ -10,6 +10,7 @@ window.MEMORIAS_I18N = {
     nav: {
       intro: "Introducción",
       genealogia: "Genealogía",
+      arbol: "Árbol genealógico",
       das: "Das y la Cerdanya",
       infancia: "Infancia",
       escuela: "La escuela",
@@ -79,6 +80,12 @@ window.MEMORIAS_I18N = {
         <p>Todas las personas de apellido Clerch que figuran en este documento, desde 1615 hasta 1900, nacieron en Das, Gerona, España.</p>
       </div>`,
         fig: "Página original — Ascendencia Clerch (1957)"
+      },
+      arbol: {
+        title: "Árbol genealógico",
+        lead: "Visualización interactiva de la familia Clerch según el manuscrito de 1957. Das (Gerona) · Argentina.",
+        body: "",
+        isTree: true
       },
       das: {
         title: "Das y la Cerdanya",
@@ -271,6 +278,7 @@ window.MEMORIAS_I18N = {
     nav: {
       intro: "Introducció",
       genealogia: "Genealogia",
+      arbol: "Arbre genealògic",
       das: "Das i la Cerdanya",
       infancia: "Infància",
       escuela: "L'escola",
@@ -340,6 +348,12 @@ window.MEMORIAS_I18N = {
         <p>Totes les persones de cognom Clerch que figuren en aquest document, des del 1615 fins al 1900, van néixer a Das, Girona, Espanya.</p>
       </div>`,
         fig: "Pàgina original — Ascendència Clerch (1957)"
+      },
+      arbol: {
+        title: "Arbre genealògic",
+        lead: "Visualització interactiva de la família Clerch segons el manuscrit de 1957. Das (Girona) · Argentina.",
+        body: "",
+        isTree: true
       },
       das: {
         title: "Das i la Cerdanya",

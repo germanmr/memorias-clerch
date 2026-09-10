@@ -1,6 +1,6 @@
 (function () {
   const NAV_ORDER = [
-    'intro', 'genealogia', 'das', 'infancia', 'escuela', 'barcelona', 'argentina',
+    'intro', 'genealogia', 'arbol', 'das', 'infancia', 'escuela', 'barcelona', 'argentina',
     'antillas', 'familia-espana', 'tito', 'salvador', 'maria', 'rosita', 'dolores',
     'francisco', 'maria-hermana', 'globo', 'fotos', 'nota-1957', 'originales'
   ];
@@ -61,9 +61,16 @@
         section.appendChild(lead);
       }
 
-      const bodyWrap = document.createElement('div');
-      bodyWrap.innerHTML = sec.body;
-      while (bodyWrap.firstChild) section.appendChild(bodyWrap.firstChild);
+      if (sec.isTree && window.renderGenealogyTree) {
+        const treeHost = document.createElement('div');
+        treeHost.className = 'tree-root';
+        section.appendChild(treeHost);
+        window.renderGenealogyTree(lang, treeHost);
+      } else if (sec.body) {
+        const bodyWrap = document.createElement('div');
+        bodyWrap.innerHTML = sec.body;
+        while (bodyWrap.firstChild) section.appendChild(bodyWrap.firstChild);
+      }
 
       if (sec.note) {
         const note = document.createElement('div');
